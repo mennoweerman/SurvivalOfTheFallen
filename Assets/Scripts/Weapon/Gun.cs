@@ -8,7 +8,7 @@ public class Gun : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GunData gunData;
-    [SerializeField] private Transform muzzle;
+    [SerializeField] private Transform cam;
     [SerializeField] private TMP_Text ammoText;
     
 
@@ -21,9 +21,13 @@ public class Gun : MonoBehaviour
         PlayerShoot.reloadInput += StartReload;
     }
 
+    private void OnDisable() => gunData.reloading = false;
+        
+    
+
     public void StartReload()
     {
-        if (!gunData.reloading)
+        if (!gunData.reloading && this.gameObject.activeSelf)
         {
             StartCoroutine(Reload());
         }
@@ -67,7 +71,7 @@ public class Gun : MonoBehaviour
     {
         timeSinceLastShot += Time.deltaTime;
 
-        Debug.DrawRay(muzzle.position, muzzle.forward, Color.red);
+        Debug.DrawRay(cam.position, cam.forward, Color.red);
 
         if(!gunData.reloading)
         {

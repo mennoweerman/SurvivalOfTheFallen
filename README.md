@@ -1,30 +1,37 @@
 # Survival Of The Fallen
+
 Een voorbeeld repository voor het examenwerk
 
-In deze repository vind je de informatie over het examen project.
+#### Het idee van de game is:
 
-Omschrijf de examenopdracht evt de klant en wat het doel voor de klant is.
-Omschrijf ook wat het idee van je game is.
+Een first person survival game waarmee je doormiddel van materialen verzamelen, wapens en voorwerpen kan creeëren om jezelf en je basis te beschermen. Je kan je basis maken op verschillende werelden die je weer kan ontgrendelen doormiddel van levels.
 
 # Geproduceerde Game Onderdelen
 
 Geef per teammember aan welke game onderdelen je hebt geproduceerd. Doe dit met behulp van omschrijvingen visual sheets en screenshots.
 Maak ook een overzicht van alle onderdelen met een link naar de map waarin deze terug te vinden zijn.
 
-Bijv..
-
 Menno Weerman:
   * [Scriptable Guns Script](https://github.com/mennoweerman/SurvivalOfTheFallen/blob/main/Assets/Scripts/Scriptable%20Objects/GunData.cs)
   * [Enemy Behavior](https://github.com/mennoweerman/SurvivalOfTheFallen/blob/main/Assets/Scripts/Enemy/EnemyAI.cs)
-  * [Some other mechanic Y](https://github.com/erwinhenraat/VoorbeeldExamenRepo/tree/master/src/mechanic_y)
+  * [Inventory System (WIP)](https://github.com/erwinhenraat/VoorbeeldExamenRepo/tree/master/src/mechanic_y)
 
-## Some Script by Student X
+## Scriptable Guns
 
-Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line.
+Ik heb scriptable object gebruikt omdat dat ik dan snel gegevens van de wapens kan opslaan en opvragen. Scriptable objects zijn vooral handig aangezien je meerdere instanties van een object kan maken met dezelfde variabelen. De variablen die ik heb gebruikt zijn: De naam van het geweer, hoeveel schade het wapen doet, de maximale afstand die het wapen kan schieten, hoeveel kogels het wapen op dat moment  heeft, het maximaal aantal kogels van het wapen, hoe snel het wapen schiet en hoe lang het duurt voordat het wapen herladen is. Dus doormiddel van scriptable objects kan ik met een paar klikken een wapen aanmaken en gebruiken.
 
 ![example](https://user-images.githubusercontent.com/1262745/189135129-34d15823-0311-46b5-a041-f0bbfede9e78.png)
 
-### flowchart voor enemy wave system:
+
+## Enemy Behavior
+
+De enemy wordt met een "hoofd" script waarin staat wanneer de vijand welk gedrag vertoont, want de vijand heeft 3 soorten gedrag. De 3 soorten gedrag zijn: 
+
+* Patrolling state, de vijand loopt naar random checkpoints toe om het gebied te verkennen.
+* Chasing state, de vijand achtervolgt de vijand achtervolgt de speler net zolang totdat hij binnen de Attack range is of dat hij buiten het zicht is van de vijand.
+* Attacking state, als de vijand binnen de Attack range is dan word geactiveerd dat de speler schade krijgt om een bepaald aantal seconden totdat de vijand dood is of totdat de speler uit de Attack range is.
+
+## flowchart voor Enemy Wave Systeem:
 ```mermaid
 flowchart TD
 
@@ -46,45 +53,35 @@ more_lev -->|yes, there's more| next_lev(start next level)
 more_lev -->|no more levels| end_d((end))
 next_lev --> start
 ```
-### class diagram voor game entities:
 
+## Inventory System
+
+Het Inventory Systeem werkt dat je items kan oppakken en verwijderen. Maar je kan doormiddel van kisten je items/wapens opslaan en later weer uit de kisten halen. De inventory en hotbar zijn licht gebaseerd op die van minecraft. De items kan je zelf verzamelen of kopen vanuit een winkel. Die je vervolgens kan gebruiken om je wapens of je schip kan upgraden, waarbij de zeldzame materialen worden verdedigt door sterkere en meer schade aandoenende vijanden.
+
+## flowchart voor Inventory System:
 ```mermaid
-classDiagram
+flowchart TD
 
-Unit <|-- Tower
-Unit <|-- Monster
-Unit <|-- Boss
-Unit : +int life
-Unit : +int speed
-Unit: +isMovable()
-Unit: +Destroy()
-class Tower{
-+String turretType
-+target()
-+shoot()
-}
-class Monster{
--int reward
--regenerates()
-}
-class Boss{
-+bool is_unique
-+specialSkill()
-}
+start((Start)) -->|wait 5 seconds| spawn_w(spawn wave)
+spawn_w --> checken(check enemies in list)
+checken --> spawn_e(spawn enemies at once)
+spawn_e --> reached_base{enemy reached base?}
+reached_base -->|yes| lose_life(player loses a life)
+reached_base -->|no| money(player makes money)
+lose_life --> wave_done{wave done?}
+money --> wave_done
+wave_done -->|no| reached_base
+no_more_waves{no more waves?} -->|no more| more_lev(more levels?)
+wave_done -->|yes| no_more_waves
+no_more_waves -->|still waves| next_wave(goto next wave)
+next_wave --> start_wave
+start_wave --> spawn_w
+more_lev -->|yes, there's more| next_lev(start next level)
+more_lev -->|no more levels| end_d((end))
+next_lev --> start
 ```
 
-
-## Some other Mechanic X by Student X
-
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-
-
-## Some other Mechanic Y by Student X
-
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-
-
-## Water Shader by Student Y
+## Water Shader 
 
 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
@@ -93,7 +90,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 
 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
-## Some beautifull script by Student Z
+## Some beautiful script by Student Z
 
 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
