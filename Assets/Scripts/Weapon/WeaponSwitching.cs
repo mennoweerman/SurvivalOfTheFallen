@@ -68,6 +68,6 @@ public class WeaponSwitching : MonoBehaviour
 
     private void OnWeaponSelected()
     {
-        throw new NotImplementedException();
+        Debug.Log("Switched new weapon");
     }
 }

@@ -7,6 +7,8 @@ public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent agent;
 
+    public PlayerMovementAdvanced takeDamage;
+
     public Transform player;
 
     public LayerMask whatIsGround, whatIsPlayer;
@@ -18,6 +20,7 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Attacking")]
     public float timeBetweenAttacks;
+    public float waitTime;
     bool alreadyAttacked;
 
     [Header("States")]
@@ -63,8 +66,8 @@ public class EnemyAI : MonoBehaviour
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-    
-        if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
         {
             walkPointSet = true;
         }
@@ -75,25 +78,22 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
-    private void AttackPlayer()
+    void AttackPlayer()
     {
-        //Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
-
-        transform.LookAt(player);
-
-        
-
-        if (!alreadyAttacked)
+        if (Time.time > waitTime)
         {
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            waitTime = Time.time + timeBetweenAttacks;
+            StartCoroutine(nameof(Attack));
         }
     }
-    private void ResetAttack()
+    IEnumerator Attack()
     {
-        alreadyAttacked = false;
+        agent.SetDestination(transform.position);
+        takeDamage.TakeDamage(10);
+        transform.LookAt(player);
+        yield return new WaitForSeconds(timeBetweenAttacks);
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

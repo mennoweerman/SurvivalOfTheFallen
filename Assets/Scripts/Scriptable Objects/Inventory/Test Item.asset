@@ -16,4 +16,4 @@ MonoBehaviour:
   displayName: Test Item 1
   icon: {fileID: 0}
   description: This is a Test Item
-  maxStackSize: 2
+  maxStackSize: 5
