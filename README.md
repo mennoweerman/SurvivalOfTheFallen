@@ -14,7 +14,7 @@ Maak ook een overzicht van alle onderdelen met een link naar de map waarin deze 
 Menno Weerman:
   * [Scriptable Guns Script](https://github.com/mennoweerman/SurvivalOfTheFallen/blob/main/Assets/Scripts/Scriptable%20Objects/GunData.cs)
   * [Enemy Behavior](https://github.com/mennoweerman/SurvivalOfTheFallen/blob/main/Assets/Scripts/Enemy/EnemyAI.cs)
-  * [Inventory System (WIP)](https://github.com/erwinhenraat/VoorbeeldExamenRepo/tree/master/src/mechanic_y)
+  * [Inventory System (WIP)](https://github.com/mennoweerman/SurvivalOfTheFallen/blob/Development/Assets/Scripts/Inventory%20Scripts/InventorySystem.cs)
 
 ## Scriptable Guns
 
@@ -56,7 +56,7 @@ next_lev --> start
 
 ## Inventory System
 
-Het Inventory Systeem werkt dat je items kan oppakken en verwijderen. Maar je kan doormiddel van kisten je items/wapens opslaan en later weer uit de kisten halen. De inventory en hotbar zijn licht gebaseerd op die van minecraft. De items kan je zelf verzamelen of kopen vanuit een winkel. Die je vervolgens kan gebruiken om je wapens of je schip kan upgraden, waarbij de zeldzame materialen worden verdedigt door sterkere en meer schade aandoenende vijanden.
+Het Inventory Systeem werkt dat je items kan oppakken en verwijderen. Maar je kan doormiddel van kisten je items/wapens opslaan en later weer uit de kisten halen. Als speler heb je zelf ook een inventory en een hotbar, waarin je dus de items kan zien, pakken en laten vallen op de grond. De items kan je zelf verzamelen of kopen vanuit een winkel. Die je vervolgens kan gebruiken om je wapens of je schip kan upgraden, waarbij de zeldzame materialen worden verdedigt door sterkere en meer schade aandoenende vijanden.
 
 ## flowchart voor Inventory System:
 ```mermaid
