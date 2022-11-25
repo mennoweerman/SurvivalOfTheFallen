@@ -1,3 +1,4 @@
+
 # Survival Of The Fallen
 
 Een voorbeeld repository voor het examenwerk
@@ -20,7 +21,7 @@ Menno Weerman:
 
 Ik heb scriptable object gebruikt omdat dat ik dan snel gegevens van de wapens kan opslaan en opvragen. Scriptable objects zijn vooral handig aangezien je meerdere instanties van een object kan maken met dezelfde variabelen. De variablen die ik heb gebruikt zijn: De naam van het geweer, hoeveel schade het wapen doet, de maximale afstand die het wapen kan schieten, hoeveel kogels het wapen op dat moment  heeft, het maximaal aantal kogels van het wapen, hoe snel het wapen schiet en hoe lang het duurt voordat het wapen herladen is. Dus doormiddel van scriptable objects kan ik met een paar klikken een wapen aanmaken en gebruiken.
 
-![example](https://user-images.githubusercontent.com/1262745/189135129-34d15823-0311-46b5-a041-f0bbfede9e78.png)
+![ARScriptableObject](https://github.com/mennoweerman/SurvivalOfTheFallen/blob/Development/Fotos%20ReadMe/ARScriptableObject.jpeg)
 
 
 ## Enemy Behavior
@@ -80,3 +81,4 @@ more_lev -->|yes, there's more| next_lev(start next level)
 more_lev -->|no more levels| end_d((end))
 next_lev --> start
 ```
+
