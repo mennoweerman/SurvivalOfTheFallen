@@ -1,4 +1,3 @@
-
 # Survival Of The Fallen
 
 Een voorbeeld repository voor het examenwerk
@@ -32,6 +31,10 @@ De enemy wordt met een "hoofd" script waarin staat wanneer de vijand welk gedrag
 * Chasing state, de vijand achtervolgt de vijand achtervolgt de speler net zolang totdat hij binnen de Attack range is of dat hij buiten het zicht is van de vijand.
 * Attacking state, als de vijand binnen de Attack range is dan word geactiveerd dat de speler schade krijgt om een bepaald aantal seconden totdat de vijand dood is of totdat de speler uit de Attack range is.
 
+![EnemyAIScript](https://github.com/mennoweerman/SurvivalOfTheFallen/blob/Development/Fotos%20ReadMe/EnemyAIScript.jpeg)
+
+
+
 ## flowchart voor Enemy Wave Systeem:
 ```mermaid
 flowchart TD
@@ -58,6 +61,7 @@ next_lev --> start
 ## Inventory System
 
 Het Inventory Systeem werkt dat je items kan oppakken en verwijderen. Maar je kan doormiddel van kisten je items/wapens opslaan en later weer uit de kisten halen. Als speler heb je zelf ook een inventory en een hotbar, waarin je dus de items kan zien, pakken en laten vallen op de grond. De items kan je zelf verzamelen of kopen vanuit een winkel. Die je vervolgens kan gebruiken om je wapens of je schip kan upgraden, waarbij de zeldzame materialen worden verdedigt door sterkere en meer schade aandoenende vijanden.
+![Inventory](https://github.com/mennoweerman/SurvivalOfTheFallen/blob/Development/Fotos%20ReadMe/Inventory.jpeg)
 
 ## flowchart voor Inventory System:
 ```mermaid
@@ -81,4 +85,3 @@ more_lev -->|yes, there's more| next_lev(start next level)
 more_lev -->|no more levels| end_d((end))
 next_lev --> start
 ```
-
