@@ -9,18 +9,18 @@ public class PlayerMovementAdvanced : MonoBehaviour
     private float moveSpeed;
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
-    public float walkSpeed;
-    public float sprintSpeed;
-    public float slideSpeed;
-    public float wallrunSpeed;
-    public float climbSpeed;
-    public float vaultSpeed;
-    public float airMinSpeed;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float sprintSpeed;
+    [SerializeField] private float slideSpeed;
+    [SerializeField] private float wallrunSpeed;
+    [SerializeField] private float climbSpeed;
+    [SerializeField] private float vaultSpeed;
+    [SerializeField] private float airMinSpeed;
 
-    public float speedIncreaseMultiplier;
-    public float slopeIncreaseMultiplier;
+    [SerializeField] private float speedIncreaseMultiplier;
+    [SerializeField] private float slopeIncreaseMultiplier;
 
-    public float groundDrag;
+    [SerializeField] private float groundDrag;
 
     [Header("Health")]
     public HealthBar healthbar;

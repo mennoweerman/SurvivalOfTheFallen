@@ -29,8 +29,31 @@ public abstract class InventoryDisplay : MonoBehaviour
         }
     }
 
-    public void SlotClicked(inventorySlot_UI clickedSlot)
+    public void SlotClicked(inventorySlot_UI clickedUISlot)
     {
-        Debug.Log("Slot clicked");
+        
+
+        if (clickedUISlot.AssignedInventorySlot.Itemdata != null && mouseInventoryItem.assignedInventorySlot.Itemdata == null)
+        {
+            //If player is holding shift key? split stack
+
+            mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
+            clickedUISlot.ClearSlot();
+            return;
+        }
+
+        //Clicked slot doesn't have an item - mouse does have an item - place mouse item into empty slot.
+        if(clickedUISlot.AssignedInventorySlot.Itemdata == null && mouseInventoryItem.assignedInventorySlot.Itemdata != null)
+        {
+            clickedUISlot.AssignedInventorySlot.AssignItem(mouseInventoryItem.assignedInventorySlot);
+            clickedUISlot.UpdateUISlot();
+
+            mouseInventoryItem.ClearSlot();
+        }
+
+        //Both slots have an item - decide what to do....
+        //Are both items the same? If so combine them.
+        //Is the slot stack size + mouse stack size > the slot Max Size? If so, take from mouse.
+        //If different items, then swap the items.
     }
 }

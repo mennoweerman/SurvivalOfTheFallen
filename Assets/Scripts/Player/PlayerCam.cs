@@ -24,8 +24,9 @@ public class PlayerCam : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
+
+            Cursor.visible = !Cursor.visible;
         }
         // get mouse input
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
