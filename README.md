@@ -1,17 +1,11 @@
 # Survival Of The Fallen
 
-Een voorbeeld repository voor het examenwerk
-
 #### Het idee van de game is:
 
-Een first person survival game waarmee je doormiddel van materialen verzamelen, wapens en voorwerpen kan creeëren om jezelf en je basis te beschermen. Je kan je basis maken op verschillende werelden die je weer kan ontgrendelen doormiddel van levels.
+Een first person survival game waarmee je doormiddel van materialen verzamelen, wapens en voorwerpen kan creeëren om jezelf en je basis te beschermen. Waarbij je doormiddel van een levelsysteem op een hogere wereld kan komen waar je nieuwe en meer zeldzamere materialen kan verzamelen. Maar de vijanden in die hogere werelden hebben ook meer hp waardoor je dus voorzichtig moet gaan spelen.
 
 # Geproduceerde Game Onderdelen
 
-Geef per teammember aan welke game onderdelen je hebt geproduceerd. Doe dit met behulp van omschrijvingen visual sheets en screenshots.
-Maak ook een overzicht van alle onderdelen met een link naar de map waarin deze terug te vinden zijn.
-
-Menno Weerman:
   * [Scriptable Guns Script](https://github.com/mennoweerman/SurvivalOfTheFallen/blob/main/Assets/Scripts/Scriptable%20Objects/GunData.cs)
   * [Enemy Behavior](https://github.com/mennoweerman/SurvivalOfTheFallen/blob/main/Assets/Scripts/Enemy/EnemyAI.cs)
   * [Inventory System (WIP)](https://github.com/mennoweerman/SurvivalOfTheFallen/blob/Development/Assets/Scripts/Inventory%20Scripts/InventorySystem.cs)
@@ -39,7 +33,7 @@ De enemy wordt met een "hoofd" script waarin staat wanneer de vijand welk gedrag
 ```mermaid
 flowchart TD
 
-start((Start)) -->|wait 5 seconds| spawn_w(spawn wave)
+start((Start)) -->|On the start| spawn_w(Checkpoint zoeken)
 spawn_w --> checken(check enemies in list)
 checken --> spawn_e(spawn enemies at once)
 spawn_e --> reached_base{enemy reached base?}
@@ -52,7 +46,7 @@ no_more_waves{no more waves?} -->|no more| more_lev(more levels?)
 wave_done -->|yes| no_more_waves
 no_more_waves -->|still waves| next_wave(goto next wave)
 next_wave --> start_wave
-start_wave --> spawn_w
+
 more_lev -->|yes, there's more| next_lev(start next level)
 more_lev -->|no more levels| end_d((end))
 next_lev --> start
@@ -63,25 +57,28 @@ next_lev --> start
 Het Inventory Systeem werkt dat je items kan oppakken en verwijderen. Maar je kan doormiddel van kisten je items/wapens opslaan en later weer uit de kisten halen. Als speler heb je zelf ook een inventory en een hotbar, waarin je dus de items kan zien, pakken en laten vallen op de grond. De items kan je zelf verzamelen of kopen vanuit een winkel. Die je vervolgens kan gebruiken om je wapens of je schip kan upgraden, waarbij de zeldzame materialen worden verdedigt door sterkere en meer schade aandoenende vijanden.
 ![Inventory](https://github.com/mennoweerman/SurvivalOfTheFallen/blob/Development/Fotos%20ReadMe/Inventory.jpeg)
 
-## flowchart voor Inventory System:
+## Class diagram voor Inventory System:
 ```mermaid
-flowchart TD
+classDiagram
 
-start((Start)) -->|wait 5 seconds| spawn_w(spawn wave)
-spawn_w --> checken(check enemies in list)
-checken --> spawn_e(spawn enemies at once)
-spawn_e --> reached_base{enemy reached base?}
-reached_base -->|yes| lose_life(player loses a life)
-reached_base -->|no| money(player makes money)
-lose_life --> wave_done{wave done?}
-money --> wave_done
-wave_done -->|no| reached_base
-no_more_waves{no more waves?} -->|no more| more_lev(more levels?)
-wave_done -->|yes| no_more_waves
-no_more_waves -->|still waves| next_wave(goto next wave)
-next_wave --> start_wave
-start_wave --> spawn_w
-more_lev -->|yes, there's more| next_lev(start next level)
-more_lev -->|no more levels| end_d((end))
-next_lev --> start
+InventorySystem<|-- Tower:Is A
+InventorySystem<|-- Monster
+InventorySystem<|-- Boss
+InventorySystem : +int life
+InventorySystem: +int speed
+InventorySystem: +isMovable()
+InventorySystem: +Destroy()
+class Tower{
++String turretType
++target()
++shoot()
+}
+class Monster{
+-int reward
+-regenerates()
+}
+class Boss{
++bool is_unique
++specialSkill()
+}
 ```
