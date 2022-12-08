@@ -60,6 +60,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUpRadius: 1
   itemData: {fileID: 11400000, guid: 0b2afaed945fdf64aad6f48a0787b660, type: 2}
+  rotationSpeed: 20
+  itemSaveData:
+    itemData: {fileID: 0}
+    itemPosition: {x: 0, y: 0, z: 0}
+    itemRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3802496470890751356
 GameObject:
   m_ObjectHideFlags: 0

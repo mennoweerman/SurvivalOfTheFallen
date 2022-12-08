@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8205d9e3e8238a245bb0513ce322ae7a, type: 3}
-  m_Name: Test Item
+  m_Script: {fileID: 11500000, guid: 9bf8e4feb3eaf3848b56a445acf7f743, type: 3}
+  m_Name: Database
   m_EditorClassIdentifier: 
-  id: 0
-  displayName: Test Item 1
-  icon: {fileID: 21300000, guid: 19ce1aba1c6cd57468ec6befb75cb188, type: 3}
-  description: This is a Test Item
-  maxStackSize: 5
+  itemDatabase:
+  - {fileID: 11400000, guid: 0b2afaed945fdf64aad6f48a0787b660, type: 2}
+  - {fileID: 11400000, guid: 8f1f9d1bca59b6444bd7330df3487abc, type: 2}

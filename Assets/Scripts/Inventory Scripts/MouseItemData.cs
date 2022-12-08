@@ -12,29 +12,57 @@ public class MouseItemData : MonoBehaviour
     public TextMeshProUGUI itemCount;
     public InventorySlot assignedInventorySlot;
 
+    private Transform playerTransform;
+    public float dropOffset = 0.5f;
     private void Awake()
     {
         itemSprite.color = Color.clear;
+        itemSprite.preserveAspect = true;
         itemCount.text = "";
+
+        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        if (playerTransform == null)
+        {
+            Debug.Log("Player not found");
+        }
     }
 
     public void UpdateMouseSlot(InventorySlot invSlot)
     {
         assignedInventorySlot.AssignItem(invSlot);
-        itemSprite.sprite = invSlot.Itemdata.icon;
-        itemCount.text = invSlot.StackSize.ToString();
+        UpdateMouseSlot();
+    }
+
+    public void UpdateMouseSlot()
+    {
+        itemSprite.sprite = assignedInventorySlot.Itemdata.icon;
+        itemCount.text = assignedInventorySlot.StackSize.ToString();
         itemSprite.color = Color.white;
     }
 
     private void Update()
     {
-        if (assignedInventorySlot.Itemdata != null)
+        if (assignedInventorySlot.Itemdata != null) //If it has an item, follow the mouse position
         {
             transform.position = Mouse.current.position.ReadValue();
             
-            if(Mouse.current.leftButton.wasPressedThisFrame && !IsPointerOverUIObject())
+            if (Mouse.current.leftButton.wasPressedThisFrame && !IsPointerOverUIObject())
             {
-                ClearSlot();
+                if (assignedInventorySlot.Itemdata.ItemPrefab != null)
+                {
+                    Instantiate(assignedInventorySlot.Itemdata.ItemPrefab, playerTransform.position + playerTransform.forward * dropOffset, Quaternion.identity);
+                }
+
+                if (assignedInventorySlot.StackSize > 1)
+                {
+                    assignedInventorySlot.AddToStack(-1);
+                    UpdateMouseSlot();
+                }
+                else
+                {
+                    ClearSlot();
+                }
             }
         }
     }
