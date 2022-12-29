@@ -14,10 +14,13 @@ public class PlayerCam : MonoBehaviour
     float xRotation;
     float yRotation;
 
+    public bool inMenu; //Need to make when bool is true the cam doesnt follow the mouse
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        //inMenu = false; //Sets it false in the beginning so the camera does follow the mouse
     }
     
     private void Update()

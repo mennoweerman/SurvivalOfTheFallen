@@ -8,6 +8,7 @@ public class InventoryUIController : MonoBehaviour
 {
 	[FormerlySerializedAs("chestPanel")] public DynamicInventoryDisplay inventoryPanel;
 	public DynamicInventoryDisplay playerBackPackPanel;
+	//public PlayerCam cam; //Need to make when bool is true the cam doesnt follow the mouse
 
 	private void Awake()
 	{
@@ -44,6 +45,7 @@ public class InventoryUIController : MonoBehaviour
 	{
 		inventoryPanel.gameObject.SetActive(true);
 		inventoryPanel.RefreshDynamicInventory(invToDisplay, offset);
+		
 	}
 
     void DisplayPlayerInventory(InventorySystem invToDisplay, int offset)

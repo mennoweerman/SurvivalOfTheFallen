@@ -7,9 +7,10 @@ using UnityEngine.Events;
 [System.Serializable]
 public abstract class InventoryHolder : MonoBehaviour
 {
-    [SerializeField] private int inventorySize;
+    [SerializeField] private int inventorySize; //Inventory size of the backpack and hotbar combined
     [SerializeField] protected InventorySystem primaryInventoryHolder;
-    [SerializeField] protected int offset = 10;
+    [SerializeField] protected int offset = 10; //How many slots to skip
+    [SerializeField] protected int gold;
 
     public int Offset => offset;
 
@@ -21,7 +22,7 @@ public abstract class InventoryHolder : MonoBehaviour
     {
         SaveLoad.onLoadGame += LoadInventory;
 
-        primaryInventoryHolder = new InventorySystem(inventorySize);
+        primaryInventoryHolder = new InventorySystem(inventorySize, gold);
     }
 
     protected abstract void LoadInventory(SaveData saveData);
