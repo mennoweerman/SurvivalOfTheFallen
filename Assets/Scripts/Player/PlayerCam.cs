@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class PlayerCam : MonoBehaviour
 {
+
     public float sensX;
     public float sensY;
 
@@ -43,6 +44,17 @@ public class PlayerCam : MonoBehaviour
         // rotate cam and orientation
         camHolder.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+
+        if (inMenu == true)
+        {
+            sensX = 0f;
+            sensY = 0f;
+        }
+        else
+        {
+            sensX = 200f;
+            sensY = 200f;
+        }
     }
 
     public void DoFov(float endValue)

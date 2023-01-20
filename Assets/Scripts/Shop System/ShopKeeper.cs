@@ -12,6 +12,11 @@ public class ShopKeeper : MonoBehaviour, IInteractable
 
     private ShopSaveData shopSaveData;
 
+    public ShopSaveData ShopSaveData
+    {
+        get { return shopSaveData; }
+    }
+
     public static UnityAction<ShopSystem, PlayerInventoryHolder> OnShopWindowRequested;
 
     private string id;
@@ -41,10 +46,14 @@ public class ShopKeeper : MonoBehaviour, IInteractable
 
     private void LoadInventory(SaveData data)
     {
-        if (data.shopKeeperDictionary.TryGetValue(id, out ShopSaveData _shopSaveData)) return;
-
-        shopSaveData = _shopSaveData;
+        ShopSaveData _shopSaveData;
+        
+        if (data.shopKeeperDictionary.TryGetValue(id, out _shopSaveData)) return;
+        Debug.Log(_shopSaveData);
         shopSystem = shopSaveData.ShopSystem;
+        shopSaveData = _shopSaveData;
+        
+        
     }
 
     private void OnDisable()
@@ -83,5 +92,6 @@ public class ShopSaveData
     public ShopSaveData(ShopSystem shopSystem)
     {
         ShopSystem = shopSystem;
+
     }
 }

@@ -11,6 +11,8 @@ public class PlayerInventoryHolder : InventoryHolder
 
     public static UnityAction<InventorySystem, int> OnPlayerInventoryDisplayRequested;
 
+    public PlayerCam _playerCam;
+
     private void Start()
     {
         SaveGameManager.data.playerInventory = new InventorySaveData(PrimaryInventorySystem);
@@ -29,9 +31,12 @@ public class PlayerInventoryHolder : InventoryHolder
 
     void Update()
     {
-        if (Keyboard.current.bKey.wasPressedThisFrame) OnPlayerInventoryDisplayRequested?.Invoke(PrimaryInventorySystem, offset);
+        if (Keyboard.current.bKey.wasPressedThisFrame)
+        {
+            OnPlayerInventoryDisplayRequested?.Invoke(PrimaryInventorySystem, offset);
+            _playerCam.inMenu = true;
+        }
     }
-
     public bool addToInventory(InventoryItemData data, int amount)
     {
         if (PrimaryInventorySystem.addToInventory(data, amount))

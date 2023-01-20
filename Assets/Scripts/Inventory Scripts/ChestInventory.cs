@@ -9,11 +9,7 @@ public class ChestInventory : InventoryHolder, IInteractable
 {
     public UnityAction<IInteractable> OnInteractionComplete { get; set;}
 
-    //protected override void Awake()
-    //{
-    //    base.Awake();
-    //    SaveLoad.onLoadGame += LoadInventory;
-    //}
+    
 
     private void Start()
     {

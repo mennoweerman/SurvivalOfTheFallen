@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class PlayerMovementAdvanced : MonoBehaviour
 {
+    public PlayerCam _playerCam;
+
     [Header("Movement")]
-    private float moveSpeed;
+    [SerializeField]private float moveSpeed;
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
     [SerializeField] private float walkSpeed;
@@ -64,6 +67,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     Vector3 moveDirection;
 
+    
+
     Rigidbody rb;
 
     public MovementState state;
@@ -103,6 +108,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
         readyToJump = true;
 
         startYScale = transform.localScale.y;
+
+        
     }
 
     private void Update()
@@ -113,6 +120,19 @@ public class PlayerMovementAdvanced : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
+
+        if (_playerCam.inMenu == true)
+        {
+            //moveSpeed = 0f;
+            walkSpeed = 0f;
+            sprintSpeed = 0f;
+        }
+        else
+        {
+            //moveSpeed = 0f;
+            walkSpeed = 7f;
+            sprintSpeed = 10f;
+        }
 
         // handle drag
         if (grounded)
