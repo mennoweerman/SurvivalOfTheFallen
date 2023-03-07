@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private ShopKeeperDisplay shopKeeperDisplay;
+    [SerializeField] private PlayerCam cam;
 
     private void Awake()
     {
@@ -25,9 +26,10 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (Keyboard.current.oKey.wasPressedThisFrame)
         {
             shopKeeperDisplay.gameObject.SetActive(false);
+            cam.inMenu = false;
         }
     }
 

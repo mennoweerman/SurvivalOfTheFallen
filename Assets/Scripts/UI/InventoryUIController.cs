@@ -24,16 +24,16 @@ public class InventoryUIController : MonoBehaviour
 	{
 		InventoryHolder.OnDynamicInventoryDisplayRequested += DisplayInventory;
 		PlayerInventoryHolder.OnPlayerInventoryDisplayRequested += DisplayPlayerInventory;
-        EventManager.OnItemAdded += UpdateUI;
-        EventManager.OnItemRemoved += UpdateUI;
+        //EventManager.OnItemAdded += UpdateUI;
+        //EventManager.OnItemRemoved += UpdateUI;
     }
 
 	private void OnDisable()
 	{
 		InventoryHolder.OnDynamicInventoryDisplayRequested -= DisplayInventory;
         PlayerInventoryHolder.OnPlayerInventoryDisplayRequested -= DisplayPlayerInventory;
-        EventManager.OnItemAdded -= UpdateUI;
-        EventManager.OnItemRemoved -= UpdateUI;
+        //EventManager.OnItemAdded -= UpdateUI;
+        //EventManager.OnItemRemoved -= UpdateUI;
     }
 
 

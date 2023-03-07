@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultShopList
   m_EditorClassIdentifier: 
   items:
-  - itemData: {fileID: 11400000, guid: 9f7167bf0d5b2ec47a2c10f67dd10648, type: 2}
+  - itemData: {fileID: 11400000, guid: 1b86cb94ff8e8d44894bdcd3fca1a756, type: 2}
     amount: 35
   - itemData: {fileID: 11400000, guid: 8f1f9d1bca59b6444bd7330df3487abc, type: 2}
     amount: 22

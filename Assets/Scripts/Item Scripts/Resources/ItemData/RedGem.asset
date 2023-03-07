@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   displayName: Red Gem
-  icon: {fileID: 0}
+  icon: {fileID: 4081673767720881296, guid: dd3bd09e063e9ff4bafc4827c49cf95a, type: 3}
   description: This is a red gem
   maxStackSize: 1
   goldValue: 10000

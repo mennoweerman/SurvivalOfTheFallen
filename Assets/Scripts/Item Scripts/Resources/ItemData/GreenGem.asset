@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8205d9e3e8238a245bb0513ce322ae7a, type: 3}
   m_Name: GreenGem
   m_EditorClassIdentifier: 
-  id: -1
+  id: 2
   displayName: Green Gem
-  icon: {fileID: 0}
+  icon: {fileID: -8966317340166868498, guid: dd3bd09e063e9ff4bafc4827c49cf95a, type: 3}
   description: This is a green gem
   maxStackSize: 1
   goldValue: 100000

@@ -85,9 +85,10 @@ public class ShopKeeper : MonoBehaviour, IInteractable
 }
 
 [System.Serializable]
-public class ShopSaveData
+public struct ShopSaveData
 {
     public ShopSystem ShopSystem;
+    
 
     public ShopSaveData(ShopSystem shopSystem)
     {
